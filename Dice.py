@@ -122,7 +122,8 @@ class SpinboX:
     def update_label(self):
         self.label.config(text=int(self.value.get()))
     def create(self):
-        spin=Spinbox(self.frame, textvariable=self.value, from_=1, to=20, increment=1,state='readonly')
+        #setup taken into account
+        spin=Spinbox(self.frame, textvariable=self.value, from_=1, to=20, increment=1,state='readonly' , fg ='black')
         spin.config(command=self.update_label)
         spin.pack(side=TOP, padx=10,pady=3)
 
@@ -130,7 +131,7 @@ class SpinboX:
         return self.value.get()
 
 
-
+#save all the values into db
 def save():
     liste=[]
     liste.append(boutton1.getvalue())
@@ -145,7 +146,7 @@ def save():
 
 window = Tk()
 
-window.title("My app")
+window.title("Dice V2")
 window.geometry("1080x720")
 window.minsize(1080, 720)
 window.config(background='#2222df')
@@ -156,7 +157,7 @@ window.config(background='#2222df')
 label_title = Label(window, text="Dice V2", font=("Arial", 40), bg='#2222df', fg='white')
 label_title.pack()
 
-label_title = Label(window, text="hello there", font=("Arial", 30), bg='#2222df', fg='white')
+label_title = Label(window, text="W.I.P", font=("Arial", 30), bg='#2222df', fg='white')
 label_title.pack()
 
 
@@ -169,7 +170,7 @@ boutton1.value.set(result[1])
 boutton1.update_label()
 
 frame2 = Frame(frame0, bg='#2222df', pady=10,)
-boutton2 = SpinboX(frame2,"Dexterite",)
+boutton2 = SpinboX(frame2,"Dexterité",)
 boutton2.value.set(result[2])
 boutton2.update_label()
 
@@ -208,7 +209,7 @@ frame6.pack(side=BOTTOM,)
 frame7.pack(side=TOP,)
 
 framedown = Frame(window, bg='#2222df',pady=20)
-ChoixStat = Spinbox(framedown,values=('Charisme','Sagesse','Intelligence','Constitution','Dexterite','Force','autre'),state='readonly')
+ChoixStat = Spinbox(framedown,values=('Charisme','Sagesse','Intelligence','Constitution','Dexterite','Force','autre'),state='readonly' , fg ="black")
 D100 = Button(framedown, text="D100", command=partial(roll,100))
 D20 = Button(framedown, text="D20", command=partial(roll,20))
 D4 = Button(framedown, text="D4", command=partial(roll,4))
